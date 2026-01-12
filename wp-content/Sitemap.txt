@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Main Pages -->
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/about-us/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/services/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/blog/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/contact-us/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Services -->
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/services/digital-marketing/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/services/graphic-design/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/services/google-my-business/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/services/web-design/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/services/content-writing/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+ <url>
+    <loc>https://fusiondigitalmarketingagency.com/services/hospital-hr/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/blog/smarter-marketing-with-ai-the-future-of-campaign-success/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/blog/ai-video-production-without-a-camera-heres-how-it-works/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://fusiondigitalmarketingagency.com/blog/website-wasnt-indexed-by-google-how-we-solved-it/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+ <url>
+    <loc>https://fusiondigitalmarketingagency.com/blog/one-graphic-design-rule-that-transforms-visual-communication/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+<url>
+    <loc> https://fusiondigitalmarketingagency.com/blog/hr-2030-roadmap-for-hospitals-key-technologies-to-invest-in-today/</loc>
+    <lastmod>2025-09-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+
+</urlset>

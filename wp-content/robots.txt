@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /cgi-bin/
+Allow: /wp-admin/admin-ajax.php
+
+# Sitemaps
+Sitemap: https://fusiondigitalmarketingagency.com/wp-sitemap.xml
+Sitemap: https://fusiondigitalmarketingagency.com/sitemap.xml

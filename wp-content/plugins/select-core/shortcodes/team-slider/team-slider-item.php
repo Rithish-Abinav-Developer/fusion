@@ -1,0 +1,292 @@
+<?php
+namespace UltimaQodef\Modules\Shortcodes\TeamSliderItem;
+
+use UltimaQodef\Modules\Shortcodes\Lib\ShortcodeInterface;
+
+/**
+ * Class Team Slider Item
+ */
+class TeamSliderItem implements ShortcodeInterface {
+    /**
+     * @var string
+     */
+    private $base;
+
+    public function __construct() {
+        $this->base = 'qodef_team_slider_item';
+
+        add_action('vc_before_init', array($this, 'vcMap'));
+    }
+
+    /**
+     * Returns base for shortcode
+     * @return string
+     */
+    public function getBase() {
+        return $this->base;
+    }
+
+    public function vcMap() {
+
+        $team_social_icons_array = array();
+        for($x = 1; $x < 6; $x++) {
+            $teamIconCollections = ultima_qodef_icon_collections()->getCollectionsWithSocialIcons();
+            foreach($teamIconCollections as $collection_key => $collection) {
+
+                $team_social_icons_array[] = array(
+                    'type'       => 'dropdown',
+                    'heading' => sprintf( esc_html__( 'Social Icon  %s', 'select-core' ), $x),
+                    'param_name' => 'team_social_'.$collection->param.'_'.$x,
+                    'value'      => $collection->getSocialIconsArrayVC(),
+                    'dependency' => Array('element' => 'team_social_icon_pack', 'value' => array($collection_key))
+                );
+
+            }
+
+            $team_social_icons_array[] = array(
+                'type'       => 'textfield',
+                'heading' => sprintf( esc_html__( 'Social Icon  %s Link', 'select-core' ), $x),
+                'param_name' => 'team_social_icon_'.$x.'_link',
+                'dependency' => array(
+                    'element' => 'team_social_icon_pack',
+                    'value'   => ultima_qodef_icon_collections()->getIconCollectionsKeys()
+                )
+            );
+
+            $team_social_icons_array[] = array(
+                'type'       => 'dropdown',
+                'heading' => sprintf( esc_html__( 'Social Icon  %s Target', 'select-core' ), $x),
+                'param_name' => 'team_social_icon_'.$x.'_target',
+                'value'      => array(
+                    ''                            => '',
+                    esc_html__('Self', 'select-core')  => '_self',
+                    esc_html__('Blank', 'select-core') => '_blank'
+                ),
+                'dependency' => Array('element' => 'team_social_icon_'.$x.'_link', 'not_empty' => true)
+            );
+
+        }
+
+        vc_map(array(
+            'name'                      => esc_html__('Select Team Slider Item', 'select-core'),
+            'base'                      => $this->base,
+            'category'                  => esc_html__('by SELECT', 'select-core'),
+            'as_child'                  => array('only' => 'qodef_team_slider'),
+            'icon'                      => 'icon-wpb-team-slider-item extended-custom-icon',
+            'allowed_container_element' => 'vc_row',
+            'params'                    => array_merge(
+                array(
+                    array(
+                        'type'       => 'attach_image',
+                        'heading'    => esc_html__('Image', 'select-core'),
+                        'param_name' => 'team_image'
+                    ),
+                    array(
+                        'type'        => 'colorpicker',
+                        'heading'     => esc_html__('Image Overlay Color', 'select-core'),
+                        'param_name'  => 'team_overlay_color',
+                        'description' => '',
+                        'admin_label' => true,
+                    ),
+                    array(
+                        'type'        => 'textfield',
+                        'heading'     => esc_html__('Name', 'select-core'),
+                        'admin_label' => true,
+                        'param_name'  => 'team_name'
+                    ),
+                    array(
+                        'type'       => 'dropdown',
+                        'heading'    => esc_html__('Name Tag', 'select-core'),
+                        'param_name' => 'team_name_tag',
+                        'value'      => array(
+                            ''   => '',
+                            'h2' => 'h2',
+                            'h3' => 'h3',
+                            'h4' => 'h4',
+                            'h5' => 'h5',
+                            'h6' => 'h6',
+                        ),
+                        'dependency' => array('element' => 'team_name', 'not_empty' => true)
+                    ),
+                    array(
+                        'type'        => 'textfield',
+                        'heading'     => esc_html__('Position', 'select-core'),
+                        'admin_label' => true,
+                        'param_name'  => 'team_position'
+                    ),
+                    array(
+                        'type'        => 'textfield',
+                        'heading'     => esc_html__('Linked Text', 'select-core'),
+                        'admin_label' => true,
+                        'param_name'  => 'team_text_hover'
+                    ),
+                    array(
+                        'type'        => 'textfield',
+                        'heading'     => esc_html__('Link', 'select-core'),
+                        'admin_label' => true,
+                        'param_name'  => 'team_text_hover_link',
+                        'dependency'  => array('element' => 'team_text_hover', 'not_empty' => true)
+                    ),
+                    array(
+                        'type'       => 'dropdown',
+                        'heading'    => esc_html__('Link Target', 'select-core'),
+                        'param_name' => 'team_link_target',
+                        'value'      => array(
+                            esc_html__('Self', 'select-core')  => '_self',
+                            esc_html__('Blank', 'select-core') => '_blank'
+                        ),
+                        'dependency' => array('element' => 'team_text_hover_link', 'not_empty' => true)
+                    ),
+                    array(
+                        'type'        => 'textarea',
+                        'heading'     => esc_html__('Description', 'select-core'),
+                        'admin_label' => true,
+                        'param_name'  => 'team_description'
+                    ),
+                    array(
+                        'type'        => 'dropdown',
+                        'heading'     => esc_html__('Social Icon Pack', 'select-core'),
+                        'param_name'  => 'team_social_icon_pack',
+                        'admin_label' => true,
+                        'value'       => array_merge(array('' => ''), ultima_qodef_icon_collections()->getIconCollectionsVCExclude('linea_icons')),
+                        'save_always' => true
+                    ),
+                    array(
+                        'type'        => 'dropdown',
+                        'heading'     => esc_html__('Social Icons Type', 'select-core'),
+                        'param_name'  => 'team_social_icon_type',
+                        'value'       => array(
+                            esc_html__('Normal', 'select-core') => 'normal',
+                            esc_html__('Circle', 'select-core') => 'circle',
+                            esc_html__('Square', 'select-core') => 'square'
+                        ),
+                        'save_always' => true,
+                        'dependency'  => array(
+                            'element' => 'team_social_icon_pack',
+                            'value'   => ultima_qodef_icon_collections()->getIconCollectionsKeys()
+                        )
+                    )
+                ),
+                $team_social_icons_array
+            )
+        ));
+
+    }
+
+    /**
+     * Renders shortcodes HTML
+     *
+     * @param $atts array of shortcode params
+     * @param $content string shortcode content
+     *
+     * @return string
+     */
+    public function render($atts, $content = null) {
+        $default_atts = array(
+            'team_image'            => '',
+            'team_type'             => 'main-info-on-hover',
+            'team_name'             => '',
+            'team_name_tag'         => 'h4',
+            'team_position'         => '',
+            'team_overlay_color'    => '',
+            'team_description'      => '',
+            'team_text_hover'       => '',
+            'team_text_hover_link'  => '',
+            'team_link_target'      => '_self',
+            'team_social_icon_pack' => '',
+            'team_social_icon_type' => 'normal_social'
+        );
+
+
+        $team_social_icons_form_fields = array();
+        $number_of_social_icons        = 5;
+
+        for($x = 1; $x <= $number_of_social_icons; $x++) {
+
+            foreach(ultima_qodef_icon_collections()->iconCollections as $collection_key => $collection) {
+                $team_social_icons_form_fields['team_social_'.$collection->param.'_'.$x] = '';
+            }
+
+            $team_social_icons_form_fields['team_social_icon_'.$x.'_link']   = '';
+            $team_social_icons_form_fields['team_social_icon_'.$x.'_target'] = '';
+
+        }
+
+        $default_atts = array_merge($default_atts, $team_social_icons_form_fields);
+
+        $params = shortcode_atts($default_atts, $atts);
+
+        $params['number_of_social_icons'] = 5;
+        $params['team_name_tag']          = $this->getTeamNameTag($params, $default_atts);
+        $params['team_social_icons']      = $this->getTeamSocialIcons($params);
+        $params['overlay_color']          = $this->getOverlayColor($params);
+
+
+        return select_core_get_shortcode_template_part('templates/simple-team-slide', 'team-slider', '', $params);
+    }
+
+    /**
+     * Return correct heading value. If provided heading isn't valid get the default one
+     *
+     * @param $params
+     *
+     * @return mixed
+     */
+    private function getTeamNameTag($params, $args) {
+
+        $headings_array = array('h2', 'h3', 'h4', 'h5', 'h6');
+
+        return (in_array($params['team_name_tag'], $headings_array)) ? $params['team_name_tag'] : $args['team_name_tag'];
+
+    }
+
+    private function getTeamSocialIcons($params) {
+
+        extract($params);
+        $social_icons = array();
+
+        if($team_social_icon_pack !== '') {
+
+            $icon_pack                    = ultima_qodef_icon_collections()->getIconCollection($team_social_icon_pack);
+            $team_social_icon_type_label  = 'team_social_'.$icon_pack->param;
+            $team_social_icon_param_label = $icon_pack->param;
+
+            for($i = 1; $i <= $number_of_social_icons; $i++) {
+
+                $team_social_icon   = ${$team_social_icon_type_label.'_'.$i};
+                $team_social_link   = ${'team_social_icon_'.$i.'_link'};
+                $team_social_target = ${'team_social_icon_'.$i.'_target'};
+
+                if($team_social_icon !== '') {
+
+                    $team_icon_params                                = array();
+                    $team_icon_params['icon_pack']                   = $team_social_icon_pack;
+                    $team_icon_params[$team_social_icon_param_label] = $team_social_icon;
+                    $team_icon_params['link']                        = ($team_social_link !== '') ? $team_social_link : '';
+                    $team_icon_params['target']                      = ($team_social_target !== '') ? $team_social_target : '';
+                    $team_icon_params['type']                        = ($team_social_icon_type !== '') ? $team_social_icon_type : '';
+                    $team_icon_params['icon_flip_animation']         = 'yes';
+
+                    $social_icons[] = ultima_qodef_execute_shortcode('qodef_icon', $team_icon_params);
+                }
+
+            }
+
+        }
+
+        return $social_icons;
+
+    }
+
+    private function getOverlayColor($params) {
+        $style = '';
+
+        if($params['team_overlay_color'] != '') {
+            $style = 'background-color:'.$params['team_overlay_color'];
+        }
+
+        return $style;
+    }
+
+
+}

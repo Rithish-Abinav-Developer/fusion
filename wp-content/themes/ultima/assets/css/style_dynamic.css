@@ -1,0 +1,19 @@
+/* generated in /dom104888/wp-content/themes/ultima/assets/custom-styles/general-custom-styles.php ultima_qodef_design_styles function */
+.qodef-preload-background { background-image: url(https://fusiondigitalmarketingagency.com/wp-content/themes/ultima/assets/img/preload_pattern.png) !important;}
+
+/* generated in /dom104888/wp-content/themes/ultima/assets/custom-styles/general-custom-styles.php ultima_qodef_design_styles function */
+.qodef-boxed .qodef-wrapper { background-attachment: fixed;}
+
+/* generated in /dom104888/wp-content/themes/ultima/framework/modules/header/custom-styles/header.inc ultima_qodef_main_menu_styles function */
+.qodef-drop-down .narrow .second .inner ul li ul,
+			body.qodef-slide-from-bottom .qodef-drop-down .narrow .second .inner ul li:hover ul,
+			body.qodef-slide-from-top .narrow .second .inner ul li:hover ul { top: -22px;}
+
+/* generated in /dom104888/wp-content/themes/ultima/framework/modules/header/custom-styles/header.inc ultima_qodef_main_menu_styles function */
+.qodef-drop-down .second .inner>ul,
+			.qodef-drop-down .narrow .second .inner ul,
+			.qodef-drop-down .narrow .second .inner ul li ul { border: none;}
+
+/* generated in /dom104888/wp-content/themes/ultima/framework/modules/header/custom-styles/header.inc ultima_qodef_main_menu_styles function */
+.qodef-drop-down .second .inner ul.right li ul { margin-left: 0;}
+
